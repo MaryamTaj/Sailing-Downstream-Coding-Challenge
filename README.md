@@ -1,1 +1,1 @@
-# Sailing-Downstream-Task
+# Sailing-Downstream-Coding-Challenge
