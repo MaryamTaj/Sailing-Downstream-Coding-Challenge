@@ -1,0 +1,46 @@
+import pytest
+
+def indices_removed(list_int:list) -> list:
+    """
+    Returns a list of integers with items at positions that are multiples of 2, or 3, removed. 
+    If the input list of integers' length is not a multiple of 10, it throws an error.
+    
+    >>> indices_removed([])
+    []
+
+    >>> indices_removed([1,2,3,4,5,6,7,8,9,10])
+    [2, 6, 8]
+
+    >>> indices_removed([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+    [1, 1, 1, 1, 1, 1, 1]
+    """
+    # Raise an error when the input list's length is not a multiple of 10.
+    if len(list_int) % 10 != 0:
+        raise ValueError("Error - the list's length is not a multiple of 10.")
+    
+    # Initialize an empty list which will store all elements at indices that are multiples of 2, or 3. 
+    removed_int = []
+    for i in range(0, len(list_int)):
+        # Iterate through the input list, and store all elements at indices that are multiples of 2, or 3 in removed_int.
+        if i % 2 == 0 or i % 3 == 0:
+            removed_int.append(list_int[i])
+    
+    # Remove all the elements from the input list that were initially at positions that are multiples of 2, or 3.
+    for i in range(0, len(removed_int)):
+        list_int.remove(removed_int[i])
+
+    return list_int
+
+
+def test_multiple_ten() -> None:
+    """Test that an input list with a length that is not a multiple of ten, raises an exception."""
+    
+    with pytest.raises(ValueError):
+        indices_removed([1,2,3,4,5])
+
+
+
+
+if __name__ == '__main__':
+    import doctest     # import the doctest library
+    doctest.testmod()  # run the tests
